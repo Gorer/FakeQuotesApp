@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Presentation.Repository.Room.AddQuote">
+
+    <EditText
+        android:id="@+id/quoteTextEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Quote Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nameAuthorTextEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Author Name"
+        app:layout_constraintEnd_toStartOf="@+id/lastnameAuthorTextEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
+
+    <EditText
+        android:id="@+id/lastnameAuthorTextEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Author Lastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameAuthorTextEdit"
+        app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
+
+    <Button
+        android:id="@+id/addQuoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Quote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

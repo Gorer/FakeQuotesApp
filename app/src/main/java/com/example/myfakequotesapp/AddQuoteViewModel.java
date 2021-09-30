@@ -10,11 +10,5 @@ public class AddQuoteViewModel extends ViewModel {
         quote.nameAuthor = nameAuthor;
         quote.lastnameAuthor = lastnameAuthor;
         Repository.getDataBase().quoteDao().insertQuote(quote);
-
-        /*Product product =new Product();
-        product.name=nameAuthor;
-        product.description=lastnameAuthor;
-        product.price=price;
-        Repository.getDataBase().userDAO().insertProduct(product);*/
     }
 }

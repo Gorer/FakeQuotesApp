@@ -11,7 +11,7 @@
         android:id="@+id/quoteTextEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Edit Quote Text"
+        android:hint="Edit Quote Text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +20,7 @@
         android:id="@+id/nameAuthorTextEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Edit Author Name"
+        android:hint="Edit Author Name"
         app:layout_constraintEnd_toStartOf="@+id/lastnameAuthorTextEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
@@ -29,7 +29,7 @@
         android:id="@+id/lastnameAuthorTextEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Edit Author Lastname"
+        android:hint="Edit Author Lastname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nameAuthorTextEdit"
         app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />

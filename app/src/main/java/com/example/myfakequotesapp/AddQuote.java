@@ -4,16 +4,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myfakequotesapp.databinding.ActivityAddQuoteBinding;
 
 public class AddQuote extends AppCompatActivity {
+    private AddQuoteViewModel addViewModel;
     private ActivityAddQuoteBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_add_new_quote);
 
         binding = ActivityAddQuoteBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -26,17 +27,11 @@ public class AddQuote extends AppCompatActivity {
                         binding.lastnameAuthorTextEdit.getText().toString());
             }
         });
-
+        addViewModel = new ViewModelProvider(this).get(AddQuoteViewModel.class);
     }
 
     private void saveNewQuote(String quoteText, String nameAuthor, String lastnameAuthor){
-        QuoteRoomDatabase database = QuoteRoomDatabase.getInstance(this.getApplicationContext());
-        Quote quote = new Quote();
-        quote.quoteText = quoteText;
-        quote.nameAuthor = nameAuthor;
-        quote.lastnameAuthor = lastnameAuthor;
-        database.quoteDao().insertQuote(quote);
-
+        addViewModel.AddQuoteThroughVM(quoteText,nameAuthor,lastnameAuthor);
         finish();
     }
 }

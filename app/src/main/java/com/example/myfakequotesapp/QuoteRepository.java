@@ -1,15 +1,4 @@
-package com.example.myfakequotesapp.Presentation.Repository.Room;
-
-import android.app.Application;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.example.myfakequotesapp.Domain.Model.Quote;
-import com.example.myfakequotesapp.Presentation.Repository.RepositoryTasks;
-import com.example.myfakequotesapp.Presentation.Repository.Room.DAO.QuoteDao;
-
-import java.util.List;
+package com.example.myfakequotesapp;
 
 public class QuoteRepository {/*implements RepositoryTasks {
     private QuoteDao mQuoteDao;

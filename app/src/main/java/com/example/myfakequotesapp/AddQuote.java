@@ -1,12 +1,10 @@
-package com.example.myfakequotesapp.Presentation.Repository.Room;
+package com.example.myfakequotesapp;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myfakequotesapp.Domain.Model.Quote;
-import com.example.myfakequotesapp.Presentation.Repository.Room.QuoteRoomDatabase;
 import com.example.myfakequotesapp.databinding.ActivityAddQuoteBinding;
 
 public class AddQuote extends AppCompatActivity {

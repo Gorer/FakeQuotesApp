@@ -1,4 +1,4 @@
-package com.example.myfakequotesapp.Presentation.View.Adapters;
+package com.example.myfakequotesapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,21 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myfakequotesapp.Domain.Model.Quote;
-import com.example.myfakequotesapp.R;
-
 import java.util.List;
 
 public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.QuoteViewHolder>{
     private Context context;
-    List<Quote> QuoteList;
+    List<Quote> quoteList;
 
     public QuoteListAdapter(Context context){
         this.context = context;
     }
 
     public void setQuoteList(List<Quote> quoteList){
-        this.QuoteList = quoteList;
+        this.quoteList = quoteList;
         notifyDataSetChanged();
     }
 
@@ -38,19 +35,19 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.Quot
 
     @Override
     public void onBindViewHolder(@NonNull QuoteViewHolder holder, int position) {
-        holder.quoteText.setText(this.QuoteList.get(position).quoteText);
-        holder.nameAuthor.setText(this.QuoteList.get(position).nameAuthor);
-        holder.lastnameAuthor.setText(this.QuoteList.get(position).lastnameAuthor);
+        holder.quoteText.setText(this.quoteList.get(position).quoteText);
+        holder.nameAuthor.setText(this.quoteList.get(position).nameAuthor);
+        holder.lastnameAuthor.setText(this.quoteList.get(position).lastnameAuthor);
 
     }
 
     @Override
     public int getItemCount() {
-        if (QuoteList == null) {
+        if (quoteList == null) {
             return 0;
         }
         else {
-            return QuoteList.size();
+            return quoteList.size();
         }
     }
     public class QuoteViewHolder extends RecyclerView.ViewHolder{

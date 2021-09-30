@@ -1,8 +1,6 @@
-package com.example.myfakequotesapp.Presentation.Repository;
+package com.example.myfakequotesapp;
 
 import androidx.lifecycle.LiveData;
-
-import com.example.myfakequotesapp.Domain.Model.Quote;
 
 import java.util.List;
 

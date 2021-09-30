@@ -1,12 +1,9 @@
-package com.example.myfakequotesapp.Presentation.Repository.Room;
+package com.example.myfakequotesapp;
 
 import android.content.Context;
 
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
-import com.example.myfakequotesapp.Domain.Model.Quote;
-import com.example.myfakequotesapp.Presentation.Repository.Room.DAO.QuoteDao;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -1,6 +1,8 @@
-package com.example.myfakequotesapp;
+package com.example.myfakequotesapp.Room;
 
 import androidx.lifecycle.LiveData;
+
+import com.example.myfakequotesapp.Model.Quote;
 
 import java.util.List;
 

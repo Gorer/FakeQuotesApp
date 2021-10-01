@@ -1,4 +1,4 @@
-package com.example.myfakequotesapp;
+package com.example.myfakequotesapp.Model;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

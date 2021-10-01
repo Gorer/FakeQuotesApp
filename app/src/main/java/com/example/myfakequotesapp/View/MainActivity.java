@@ -1,4 +1,4 @@
-package com.example.myfakequotesapp;
+package com.example.myfakequotesapp.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,13 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.List;
+import com.example.myfakequotesapp.Model.Quote;
+import com.example.myfakequotesapp.ViewModel.QuoteListViewModel;
+import com.example.myfakequotesapp.R;
+import com.example.myfakequotesapp.Room.Repository;
 
-import static android.content.ContentValues.TAG;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Repository.initDataBase(getApplication());
 
-        button=findViewById(R.id.toAddQuoteButton);
+        button = findViewById(R.id.toAddQuoteButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadQuoteList() {
         LiveData<List<Quote>> liveQuote;
 
-        liveQuote =listViewModel.getListFromViewModel();
+        liveQuote = listViewModel.getListFromViewModel();
         liveQuote.observe(this, new Observer<List<Quote>>() {
             @Override
             public void onChanged(List<Quote> quotes) {
@@ -61,15 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void initRecyclerView(){
-        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);//декорации
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL);//декорации
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        quoteListAdapter =new QuoteListAdapter(getApplicationContext());
+        quoteListAdapter = new QuoteListAdapter(getApplicationContext());
         recyclerView.setAdapter(quoteListAdapter);
-        listViewModel.getListFromViewModel().observe(this, new Observer<List<Quote>>() {
+         listViewModel.getListFromViewModel().observe(this, new Observer<List<Quote>>() {
             @Override
             public void onChanged(List<Quote> quotes) {
                 quoteListAdapter.setQuoteList(quotes);

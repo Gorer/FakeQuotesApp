@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFakeQuotesApp">
-        <activity android:name=".AddQuote"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".View.AddQuote">
+        </activity>
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

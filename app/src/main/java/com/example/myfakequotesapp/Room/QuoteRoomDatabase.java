@@ -1,9 +1,12 @@
-package com.example.myfakequotesapp;
+package com.example.myfakequotesapp.Room;
 
 import android.content.Context;
 
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
+import com.example.myfakequotesapp.Model.Quote;
+import com.example.myfakequotesapp.Model.QuoteDao;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,10 +24,9 @@ public abstract class QuoteRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (QuoteRoomDatabase.class) {
                 if (INSTANCE == null) {
-                    // Узнать про context, getApplication(), getApplicationContext()
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             QuoteRoomDatabase.class, "fake_quote_2_database")
-                            .allowMainThreadQueries()
+                            //.allowMainThreadQueries()
                             .build();
                 }
             }

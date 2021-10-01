@@ -1,4 +1,4 @@
-package com.example.myfakequotesapp;
+package com.example.myfakequotesapp.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

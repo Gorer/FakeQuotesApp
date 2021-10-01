@@ -1,14 +1,24 @@
-package com.example.myfakequotesapp;
+package com.example.myfakequotesapp.Room;
 
-public class QuoteRepository {/*implements RepositoryTasks {
+import android.app.Application;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.myfakequotesapp.Model.Quote;
+import com.example.myfakequotesapp.Model.QuoteDao;
+
+import java.util.List;
+
+public class QuoteRepository implements RepositoryTasks {
     private QuoteDao mQuoteDao;
     private LiveData<List<Quote>> mAllQuotes = new MutableLiveData<>();
 
     public QuoteRepository(Application application) {
-        QuoteRoomDatabase db = QuoteRoomDatabase.getDatabase(application);
+        QuoteRoomDatabase db = QuoteRoomDatabase.getInstance(application);
         // немного непонимаю, что мы сюда записываем
         mQuoteDao = db.quoteDao();
-        mAllQuotes = mQuoteDao.getAllQuotes();
+        mAllQuotes = mQuoteDao.getAllQuote();
     }
 
     public LiveData<List<Quote>> getAllQuotes() {
@@ -18,17 +28,14 @@ public class QuoteRepository {/*implements RepositoryTasks {
     @Override
     public <T extends Quote> void addQuote(T quote) {
         QuoteRoomDatabase.databaseWriteExecutor.execute(() -> {
-            // ГДЕ РЕАЛИЗАЦИЯ?
-            // В АННОТАЦИИ
-            mQuoteDao.addQuote(((Quote) quote));
+            mQuoteDao.insertQuote(((Quote) quote));
         });
     }
 
     @Override
     public <T extends Quote> void deleteQuote(T quote) {
         QuoteRoomDatabase.databaseWriteExecutor.execute(() -> {
-            //ГДЕ РЕАЛИЗАЦИЯ?
-            mQuoteDao.deleteQuote(((Quote) quote));
+            mQuoteDao.DeleteQuote(((Quote) quote));
         });
-    }*/
+    }
 }

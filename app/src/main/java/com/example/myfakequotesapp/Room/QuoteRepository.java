@@ -13,6 +13,7 @@ import java.util.List;
 public class QuoteRepository implements RepositoryTasks {
     private QuoteDao mQuoteDao;
     private LiveData<List<Quote>> mAllQuotes = new MutableLiveData<>();
+    private Quote quoteById;
 
     public QuoteRepository(Application application) {
         QuoteRoomDatabase db = QuoteRoomDatabase.getInstance(application);
@@ -26,6 +27,14 @@ public class QuoteRepository implements RepositoryTasks {
     }
 
     @Override
+    public <T extends Quote> Quote getQuoteByID(int quoteId) {
+        QuoteRoomDatabase.databaseWriteExecutor.execute(() -> {
+            quoteById = mQuoteDao.getQuoteByID(quoteId);
+        });
+        return quoteById;
+    }
+
+    @Override
     public <T extends Quote> void addQuote(T quote) {
         QuoteRoomDatabase.databaseWriteExecutor.execute(() -> {
             mQuoteDao.insertQuote(((Quote) quote));
@@ -36,6 +45,16 @@ public class QuoteRepository implements RepositoryTasks {
     public <T extends Quote> void deleteQuote(T quote) {
         QuoteRoomDatabase.databaseWriteExecutor.execute(() -> {
             mQuoteDao.DeleteQuote(((Quote) quote));
+        });
+    }
+
+    @Override
+    public void updateQuote(Quote quote){
+        QuoteRoomDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mQuoteDao.updateQuote(quote);
+            }
         });
     }
 }

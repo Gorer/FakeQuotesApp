@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -93,6 +94,20 @@ public class MainActivity extends AppCompatActivity {
                 listViewModel.deleteQuote(((QuoteListAdapter)recyclerView.getAdapter()).quoteList.get(position));
             }
         }).attachToRecyclerView(recyclerView);
+
+        quoteListAdapter.setOnItemClickListener(new QuoteListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Quote quote) {
+                Intent intent = new Intent(MainActivity.this, QuoteDetailActivity.class);
+                intent.putExtra("id", quote.id);
+                intent.putExtra("quoteText", quote.quoteText);
+                intent.putExtra("nameAuthor", quote.nameAuthor);
+                intent.putExtra("lastnameAuthor", quote.lastnameAuthor);
+                startActivity(intent);
+
+                /// СДЕЛАТЬ ПЕРЕХОД !!!!!!!!!!!!!!!!!!!!!
+            }
+        });
     }
 
     @Override

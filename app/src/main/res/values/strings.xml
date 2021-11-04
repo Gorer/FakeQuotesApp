@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyFakeQuotesApp</string>
+    <string name="more">Подробнее</string>
+    <string name="share">Поделиться</string>
 </resources>

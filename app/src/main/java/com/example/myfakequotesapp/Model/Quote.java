@@ -14,4 +14,6 @@ public class Quote {
     public String nameAuthor;
     @ColumnInfo(name = "lastname_author")
     public String lastnameAuthor;
+    @ColumnInfo(name="image")
+    public String image;
 }

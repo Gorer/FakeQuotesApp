@@ -5,7 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.AddQuote">
+    tools:context=".View.AddQuoteActivity">
+
+    <EditText
+        android:id="@+id/lastnameAuthorTextEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Edit Author Lastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameAuthorTextEdit"
+        app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
 
     <EditText
         android:id="@+id/quoteTextEdit"
@@ -13,25 +23,18 @@
         android:layout_height="wrap_content"
         android:hint="Edit Quote Text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAdd" />
 
     <EditText
         android:id="@+id/nameAuthorTextEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Edit Author Name"
         app:layout_constraintEnd_toStartOf="@+id/lastnameAuthorTextEdit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
-
-    <EditText
-        android:id="@+id/lastnameAuthorTextEdit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Edit Author Lastname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nameAuthorTextEdit"
         app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
 
     <Button
@@ -42,4 +45,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewAdd"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#0E0404"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_launcher_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>

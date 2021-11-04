@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,19 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myfakequotesapp.R;
-import com.example.myfakequotesapp.ViewModel.AddQuoteViewModel;
-import com.example.myfakequotesapp.ViewModel.MainViewModel;
+import com.squareup.picasso.Picasso;
 
 import static android.content.ContentValues.TAG;
+import static android.net.Uri.parse;
 
 public class QuoteDetailActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private TextView author, quoteText;
     private Button share;
-    private MainViewModel mainViewModel;
     private int id;
-    //private Uri uri;
 
 
     @Override
@@ -36,10 +33,10 @@ public class QuoteDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quote_detail);
         Log.d(TAG,"onCreate: called");
 
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageViewDetail);
         quoteText = findViewById(R.id.textViewQuoteText);
         author = findViewById(R.id.textViewAuthor);
-
+        //Получаем данные из Intent'а и проверяем на наличие id
         Intent intent = getIntent();
         if(intent != null && intent.hasExtra("id")) {
             id = intent.getIntExtra("id", -1);
@@ -48,21 +45,20 @@ public class QuoteDetailActivity extends AppCompatActivity {
             finish();
         }
 
-        id=intent.getIntExtra("id",-1);
+        //
+        id = intent.getIntExtra("id",-1);
         String nameAuthor;
         String lastnameAuthor;
         nameAuthor = intent.getStringExtra("nameAuthor");
         lastnameAuthor = intent.getStringExtra("lastnameAuthor");
         author.setText(nameAuthor + " " + lastnameAuthor);
-
         quoteText.setText(intent.getStringExtra("quoteText"));
+        try {
+            Picasso.get().load(intent.getStringExtra("image")).into(imageView);
+            //imageView.setImageURI(Uri.parse(intent.getStringExtra("image")));
+        }
+        catch (NullPointerException e){
 
-
-
-        //mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-
-        //updateClick();
-        //chooseImage();
-
+        }
     }
 }

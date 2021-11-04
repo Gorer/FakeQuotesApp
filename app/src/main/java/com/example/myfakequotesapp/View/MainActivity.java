@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -43,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this, AddQuote.class),100);
+                startActivityForResult(new Intent(MainActivity.this,
+                        AddQuoteActivity.class),100);
             }
         });
         listViewModel=new ViewModelProvider(this).get(QuoteListViewModel.class);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         quoteListAdapter = new QuoteListAdapter(getApplicationContext());
         recyclerView.setAdapter(quoteListAdapter);
-         listViewModel.getListFromViewModel().observe(this, new Observer<List<Quote>>() {
+        listViewModel.getListFromViewModel().observe(this, new Observer<List<Quote>>() {
             @Override
             public void onChanged(List<Quote> quotes) {
                 quoteListAdapter.setQuoteList(quotes);
@@ -103,9 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("quoteText", quote.quoteText);
                 intent.putExtra("nameAuthor", quote.nameAuthor);
                 intent.putExtra("lastnameAuthor", quote.lastnameAuthor);
+                intent.putExtra("image", quote.image);
                 startActivity(intent);
-
-                /// СДЕЛАТЬ ПЕРЕХОД !!!!!!!!!!!!!!!!!!!!!
             }
         });
     }

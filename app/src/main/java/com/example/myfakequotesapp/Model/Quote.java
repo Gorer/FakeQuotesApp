@@ -16,6 +16,6 @@ public class Quote {
     public String lastnameAuthor;
     @ColumnInfo(name = "image")
     public String image;
-    //@ColumnInfo(name = "title")
-    //public String title;
+    @ColumnInfo(name = "title")
+    public String title;
 }

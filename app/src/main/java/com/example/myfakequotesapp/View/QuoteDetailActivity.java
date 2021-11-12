@@ -22,7 +22,7 @@ import static android.net.Uri.parse;
 public class QuoteDetailActivity extends AppCompatActivity {
 
     private ImageView imageView;
-    private TextView author, quoteText;
+    private TextView author, quoteText, title;
     private Button share;
     private int id;
 
@@ -36,6 +36,7 @@ public class QuoteDetailActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageViewDetail);
         quoteText = findViewById(R.id.textViewQuoteText);
         author = findViewById(R.id.textViewAuthor);
+        title = findViewById(R.id.textViewTitleText);
         //Получаем данные из Intent'а и проверяем на наличие id
         Intent intent = getIntent();
         if(intent != null && intent.hasExtra("id")) {
@@ -53,6 +54,7 @@ public class QuoteDetailActivity extends AppCompatActivity {
         lastnameAuthor = intent.getStringExtra("lastnameAuthor");
         author.setText(nameAuthor + " " + lastnameAuthor);
         quoteText.setText(intent.getStringExtra("quoteText"));
+        title.setText(intent.getStringExtra("title"));
         try {
             Picasso.get().load(intent.getStringExtra("image")).into(imageView);
             //imageView.setImageURI(Uri.parse(intent.getStringExtra("image")));

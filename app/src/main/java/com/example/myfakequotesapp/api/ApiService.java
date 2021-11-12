@@ -12,9 +12,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface ApiService {
-    //@GET()
     @GET("{searchtitle}")
     Call<Example> getExample(@Path("searchtitle") String searchTitle);
-    //Observable<Example> getExample(@Path("searchtitle") String searchTitle);
-    //Observable<List<Result>> getResults();
 }

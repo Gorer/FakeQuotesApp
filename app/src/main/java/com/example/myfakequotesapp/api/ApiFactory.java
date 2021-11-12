@@ -26,8 +26,6 @@ public class ApiFactory {
     private static ApiFactory apiFactory;
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://imdb-api.com/en/API/SearchTitle/k_w1rp6vvu/";
-    //private static final String TOKEN = "k_w1rp6vvu";
-
 
     private ApiFactory() {
         retrofit = new Retrofit.Builder()
@@ -56,26 +54,6 @@ public class ApiFactory {
         });
         return liveExamplesData;
     }
-
-    /*public LiveData<List<String>> getResults(String pattern) {
-        MutableLiveData<List<String>> addresses = new MutableLiveData<>();
-
-        api.listAddresses(new AddressRequest(pattern), "Token ".concat(BuildConfig.DADATA_API_KEY)).enqueue(new Callback<AddressResponse>() {
-            @Override
-            public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    addresses.setValue(response.body().suggestions.stream().map(address -> address.value).collect(Collectors.toList()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AddressResponse> call, Throwable t) {
-
-            }
-        });
-
-        return addresses;
-    }*/
 
     public static ApiFactory getInstance() {
         if (apiFactory == null) {

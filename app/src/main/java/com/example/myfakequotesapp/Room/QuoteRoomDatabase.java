@@ -12,7 +12,7 @@ import com.example.myfakequotesapp.Model.QuoteDao;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Quote.class},version = 1)
+@Database(entities = {Quote.class},version = 2)
 public abstract class QuoteRoomDatabase extends RoomDatabase {
     public abstract QuoteDao quoteDao();
 

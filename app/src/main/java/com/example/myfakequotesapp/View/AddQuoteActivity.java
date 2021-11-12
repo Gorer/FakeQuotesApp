@@ -40,7 +40,6 @@ public class AddQuoteActivity extends AppCompatActivity {
         binding.filmTitleText.setText(intent.getStringExtra("title"));
         try {
             uri = Uri.parse(intent.getStringExtra("image"));
-            //binding.filmTitleText.setText(intent.getStringExtra("title"));
         }
         catch (NullPointerException e){
 
@@ -53,8 +52,8 @@ public class AddQuoteActivity extends AppCompatActivity {
                     saveNewQuote(binding.quoteTextEdit.getText().toString(),
                             binding.nameAuthorTextEdit.getText().toString(),
                             binding.lastnameAuthorTextEdit.getText().toString(),
-
-                            uri.toString());
+                            uri.toString(),
+                            binding.filmTitleText.getText().toString());
                 }
                 else {
                     Toast.makeText(AddQuoteActivity.this,
@@ -85,8 +84,8 @@ public class AddQuoteActivity extends AppCompatActivity {
         addViewModel = new ViewModelProvider(this).get(AddQuoteViewModel.class);
     }
 
-    private void saveNewQuote(String quoteText, String nameAuthor, String lastnameAuthor, String image){
-        addViewModel.AddQuoteThroughVM(quoteText,nameAuthor,lastnameAuthor, image);
+    private void saveNewQuote(String quoteText, String nameAuthor, String lastnameAuthor, String image, String title){
+        addViewModel.AddQuoteThroughVM(quoteText, nameAuthor, lastnameAuthor, image, title);
         finish();
     }
 

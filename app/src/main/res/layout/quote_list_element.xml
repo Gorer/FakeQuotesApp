@@ -37,4 +37,13 @@
         app:layout_constraintStart_toEndOf="@+id/nameAuthorTextElementView"
         app:layout_constraintTop_toBottomOf="@+id/quoteTextElementView" />
 
+    <TextView
+        android:id="@+id/textViewTitleElementView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameAuthorTextElementView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

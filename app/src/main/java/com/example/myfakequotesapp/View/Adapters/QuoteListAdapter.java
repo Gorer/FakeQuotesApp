@@ -49,7 +49,7 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.Quot
         holder.quoteText.setText(this.quoteList.get(position).quoteText);
         holder.nameAuthor.setText(this.quoteList.get(position).nameAuthor);
         holder.lastnameAuthor.setText(this.quoteList.get(position).lastnameAuthor);
-
+        holder.title.setText(this.quoteList.get(position).title);
     }
 
     @Override
@@ -66,12 +66,14 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.Quot
         TextView quoteText;
         TextView nameAuthor;
         TextView lastnameAuthor;
+        TextView title;
         OnItemClickListener onItemClickListener;
         public QuoteViewHolder(View view){
             super(view);
             quoteText = view.findViewById(R.id.quoteTextElementView);
             nameAuthor = view.findViewById(R.id.nameAuthorTextElementView);
             lastnameAuthor = view.findViewById(R.id.lastnameAuthorTextElementView);
+            title = view.findViewById(R.id.textViewTitleElementView);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

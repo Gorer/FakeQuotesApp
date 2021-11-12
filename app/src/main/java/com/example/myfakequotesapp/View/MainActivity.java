@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("nameAuthor", quote.nameAuthor);
                 intent.putExtra("lastnameAuthor", quote.lastnameAuthor);
                 intent.putExtra("image", quote.image);
-                //intent.putExtra("title", quote.title);
+                intent.putExtra("title", quote.title);
                 startActivity(intent);
             }
         });

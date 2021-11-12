@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -50,12 +51,22 @@ public class AddQuoteActivity extends AppCompatActivity {
                     saveNewQuote(binding.quoteTextEdit.getText().toString(),
                             binding.nameAuthorTextEdit.getText().toString(),
                             binding.lastnameAuthorTextEdit.getText().toString(),
+
                             uri.toString());
                 }
                 else {
                     Toast.makeText(AddQuoteActivity.this,
                             "Вы ввели не все данные", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        binding.searchFilmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddQuoteActivity.this, FilmResults.class);
+                intent.putExtra("filmTitle", binding.filmTitleText.getText().toString());
+                startActivity(intent);
             }
         });
 
@@ -85,6 +96,7 @@ public class AddQuoteActivity extends AppCompatActivity {
             uri = data.getData();
             Picasso.get().load(uri.toString()).into(binding.imageViewAdd);
             //binding.imageViewAdd.setImageURI(uri);
+            // ContentResolver создаёт запрос в ContentProvider для установки флага доступа к объекту по uri
             getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
     }

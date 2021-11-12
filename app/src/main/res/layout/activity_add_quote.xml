@@ -37,6 +37,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quoteTextEdit" />
 
+    <EditText
+        android:id="@+id/filmTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Search Title"
+        app:layout_constraintEnd_toStartOf="@+id/searchFilmButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameAuthorTextEdit" />
+
     <Button
         android:id="@+id/addQuoteButton"
         android:layout_width="wrap_content"
@@ -55,4 +67,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/searchFilmButton"
+        android:layout_width="93dp"
+        android:layout_height="53dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastnameAuthorTextEdit" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

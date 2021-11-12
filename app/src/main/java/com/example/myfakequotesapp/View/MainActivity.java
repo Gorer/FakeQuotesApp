@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myfakequotesapp.Model.Quote;
+import com.example.myfakequotesapp.View.Adapters.QuoteListAdapter;
 import com.example.myfakequotesapp.ViewModel.QuoteListViewModel;
 import com.example.myfakequotesapp.R;
 import com.example.myfakequotesapp.Room.Repository;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                listViewModel.deleteQuote(((QuoteListAdapter)recyclerView.getAdapter()).quoteList.get(position));
+                listViewModel.deleteQuote(((QuoteListAdapter)recyclerView.getAdapter()).getQuoteList().get(position));
             }
         }).attachToRecyclerView(recyclerView);
 

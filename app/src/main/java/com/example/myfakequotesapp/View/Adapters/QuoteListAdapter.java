@@ -1,10 +1,9 @@
-package com.example.myfakequotesapp.View;
+package com.example.myfakequotesapp.View.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,11 +16,18 @@ import java.util.List;
 
 public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.QuoteViewHolder>{
     private Context context;
-    List<Quote> quoteList;
+
+
+
+    private List<Quote> quoteList;
     private OnItemClickListener listener;
 
     public QuoteListAdapter(Context context){
         this.context = context;
+    }
+
+    public List<Quote> getQuoteList() {
+        return quoteList;
     }
 
     public void setQuoteList(List<Quote> quoteList){

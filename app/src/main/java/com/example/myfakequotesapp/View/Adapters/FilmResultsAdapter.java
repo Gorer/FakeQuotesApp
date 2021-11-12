@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myfakequotesapp.Model.Quote;
 import com.example.myfakequotesapp.R;
 import com.example.myfakequotesapp.pojo.Result;
 import com.squareup.picasso.Picasso;
@@ -20,15 +21,24 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class FilmResultsAdapter extends RecyclerView.Adapter<FilmResultsAdapter.FilmResultsViewHolder> {
+    public OnPosterClickListener getOnPosterClickListener() {
+        return onPosterClickListener;
+    }
+
     private List<Result> films;
-    private OnReachEndListener onReachEndListener;
+    private OnPosterClickListener onPosterClickListener;
+    private FilmResultsAdapter.OnPosterClickListener listener;
 
     public FilmResultsAdapter() {
         this.films = new ArrayList<>();
     }
 
-    interface OnReachEndListener {
-        void onReachEnd();
+    public interface OnPosterClickListener {
+        void onPosterClick(int position);
+    }
+
+    public void setOnPosterClickListener(OnPosterClickListener onPosterClickListener) {
+        this.onPosterClickListener = onPosterClickListener;
     }
 
     public List<Result> getFilms() {
@@ -70,14 +80,16 @@ public class FilmResultsAdapter extends RecyclerView.Adapter<FilmResultsAdapter.
             super(itemView);
 
             imageViewSmallPoster = itemView.findViewById(R.id.imageViewSmallPoster);
-            /*itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (onPosterClickListener != null) {
                         onPosterClickListener.onPosterClick(getAdapterPosition());
                     }
                 }
-            });*/
+            });
         }
     }
+
+
 }

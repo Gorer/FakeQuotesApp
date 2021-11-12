@@ -37,8 +37,10 @@ public class AddQuoteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        binding.filmTitleText.setText(intent.getStringExtra("title"));
         try {
             uri = Uri.parse(intent.getStringExtra("image"));
+            //binding.filmTitleText.setText(intent.getStringExtra("title"));
         }
         catch (NullPointerException e){
 

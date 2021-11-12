@@ -88,6 +88,7 @@ public class QuoteListAdapter extends RecyclerView.Adapter<QuoteListAdapter.Quot
     public interface OnItemClickListener{
         void onItemClick(Quote quote);
     }
+
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener=listener;
 

@@ -15,12 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myfakequotesapp.Model.Quote;
 import com.example.myfakequotesapp.R;
 import com.example.myfakequotesapp.View.Adapters.FilmResultsAdapter;
+import com.example.myfakequotesapp.View.Adapters.QuoteListAdapter;
 import com.example.myfakequotesapp.ViewModel.FilmResultsViewModel;
 import com.example.myfakequotesapp.api.ApiFactory;
 import com.example.myfakequotesapp.api.ApiService;
 import com.example.myfakequotesapp.databinding.ActivityFilmResultsBinding;
 import com.example.myfakequotesapp.pojo.Example;
 import com.example.myfakequotesapp.pojo.Result;
+import com.truedev.kinoposk.api.model.movie.Film;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,6 +75,16 @@ public class FilmResults extends AppCompatActivity {
             @Override
             public void onChanged(Example example) {
                 adapter.setFilms(example.getResults());
+            }
+        });
+
+        adapter.setOnPosterClickListener(new FilmResultsAdapter.OnPosterClickListener() {
+            @Override
+            public void onPosterClick(int position) {
+                Result film = adapter.getFilms().get(position);
+                Intent intent = new Intent(FilmResults.this, AddQuoteActivity.class);
+                intent.putExtra("title", film.getTitle());
+                startActivity(intent);
             }
         });
     }

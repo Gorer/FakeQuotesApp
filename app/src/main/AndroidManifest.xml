@@ -12,7 +12,8 @@
         android:theme="@style/Theme.MyFakeQuotesApp">
         <activity android:name=".View.AddQuoteActivity">
         </activity>
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

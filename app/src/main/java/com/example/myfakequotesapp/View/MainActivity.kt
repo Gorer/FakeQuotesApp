@@ -80,7 +80,21 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }).attachToRecyclerView(recyclerView)
-        quoteListAdapter!!.setOnItemClickListener { quote: Quote ->
+        quoteListAdapter!!.setOnItemClickListener (object : QuoteListAdapter.OnItemClickListener {
+            override fun onItemClick(quote: Quote?) {
+                val intent = Intent(this@MainActivity, QuoteDetailActivity::class.java)
+                intent.putExtra("id", quote!!.id)
+                intent.putExtra("quoteText", quote!!.quoteText)
+                intent.putExtra("nameAuthor", quote!!.nameAuthor)
+                intent.putExtra("lastnameAuthor", quote!!.lastnameAuthor)
+                intent.putExtra("image", quote!!.image)
+                intent.putExtra("title", quote!!.title)
+                startActivity(intent)
+            }
+        })
+
+    /*(QuoteListAdapter.OnItemClickListener
+        { quote: Quote ->
             val intent = Intent(this@MainActivity, QuoteDetailActivity::class.java)
             intent.putExtra("id", quote!!.id)
             intent.putExtra("quoteText", quote!!.quoteText)
@@ -89,7 +103,31 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("image", quote!!.image)
             intent.putExtra("title", quote!!.title)
             startActivity(intent)
-        }
+        })*/
+
+    /*(object : QuoteListAdapter.OnItemClickListener {
+            fun setOnItemClickListener(listener: QuoteListAdapter.OnItemClickListener?) {
+                quote: Quote ->
+                val intent = Intent(this@MainActivity, QuoteDetailActivity::class.java)
+                intent.putExtra("id", quote!!.id)
+                intent.putExtra("quoteText", quote!!.quoteText)
+                intent.putExtra("nameAuthor", quote!!.nameAuthor)
+                intent.putExtra("lastnameAuthor", quote!!.lastnameAuthor)
+                intent.putExtra("image", quote!!.image)
+                intent.putExtra("title", quote!!.title)
+                startActivity(intent)
+            }
+        })*/
+    /*{ quote: Quote ->
+            val intent = Intent(this@MainActivity, QuoteDetailActivity::class.java)
+            intent.putExtra("id", quote!!.id)
+            intent.putExtra("quoteText", quote!!.quoteText)
+            intent.putExtra("nameAuthor", quote!!.nameAuthor)
+            intent.putExtra("lastnameAuthor", quote!!.lastnameAuthor)
+            intent.putExtra("image", quote!!.image)
+            intent.putExtra("title", quote!!.title)
+            startActivity(intent)
+        }*/
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

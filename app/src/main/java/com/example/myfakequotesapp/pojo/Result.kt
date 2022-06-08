@@ -23,4 +23,6 @@ class Result {
     @SerializedName("description")
     @Expose
     var description: String? = null
+
+
 }

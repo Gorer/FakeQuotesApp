@@ -4,11 +4,10 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.myfakequotesapp.Model.Quote
-import com.example.myfakequotesapp.Model.QuoteDao
-import org.jetbrains.annotations.NotNull
+import com.example.myfakequotesapp.Model.QuoteDaoNew
 
 class QuoteRepository(application: Application) : RepositoryTasks {
-    private val mQuoteDao: QuoteDao?
+    private val mQuoteDaoNew: QuoteDaoNew?
     var mAllQuotes: LiveData<List<Quote?>?>? = MutableLiveData()
     //var mAllQuotes = MutableLiveData<List<Quote?>?>()
     private var quoteById: Quote? = null
@@ -17,8 +16,8 @@ class QuoteRepository(application: Application) : RepositoryTasks {
     }
 
     override fun <T : Quote?> getQuoteByID(quoteId: Int): Quote? {
-        QuoteRoomDatabase.Companion.databaseWriteExecutor.execute(Runnable {
-            quoteById = mQuoteDao!!.getQuoteByID(quoteId)
+        QuoteRoomDatabaseNew.Companion.databaseWriteExecutor.execute(Runnable {
+            quoteById = mQuoteDaoNew!!.getQuoteByID(quoteId)
         })
         return quoteById
     }
@@ -34,33 +33,33 @@ class QuoteRepository(application: Application) : RepositoryTasks {
 
 
     override fun <T : Quote?> addQuote(quote: T) {
-        QuoteRoomDatabase.Companion.databaseWriteExecutor.execute(Runnable {
-            mQuoteDao!!.insertQuote(
+        QuoteRoomDatabaseNew.Companion.databaseWriteExecutor.execute(Runnable {
+            mQuoteDaoNew!!.insertQuote(
                 quote as Quote
             )
         })
     }
 
     override fun <T : Quote?> deleteQuote(quote: T) {
-        QuoteRoomDatabase.Companion.databaseWriteExecutor.execute(Runnable {
-            mQuoteDao!!.DeleteQuote(
+        QuoteRoomDatabaseNew.Companion.databaseWriteExecutor.execute(Runnable {
+            mQuoteDaoNew!!.DeleteQuote(
                 quote as Quote
             )
         })
     }
 
     override fun <T : Quote?> updateQuote(quote: T?) {
-        QuoteRoomDatabase.Companion.databaseWriteExecutor.execute(Runnable {
-            mQuoteDao!!.updateQuote(
+        QuoteRoomDatabaseNew.Companion.databaseWriteExecutor.execute(Runnable {
+            mQuoteDaoNew!!.updateQuote(
                 quote
             )
         })
     }
 
     init {
-        val db: QuoteRoomDatabase? = QuoteRoomDatabase.Companion.getInstance(application)
+        val db: QuoteRoomDatabaseNew? = QuoteRoomDatabaseNew.Companion.getInstance(application)
         // немного непонимаю, что мы сюда записываем
-        mQuoteDao = db?.quoteDao()
-        mAllQuotes = mQuoteDao?.allQuote as MutableLiveData<List<Quote?>?>
+        mQuoteDaoNew = db?.quoteDao()
+        mAllQuotes = mQuoteDaoNew?.allQuote as LiveData<List<Quote?>?>?
     }
 }

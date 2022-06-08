@@ -5,27 +5,26 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.myfakequotesapp.Model.Quote
-import com.example.myfakequotesapp.Model.QuoteDao
-import java.util.concurrent.ExecutorService
+import com.example.myfakequotesapp.Model.QuoteDaoNew
 import java.util.concurrent.Executors
 
 
-@Database(entities = [Quote::class], version = 2)
-abstract class QuoteRoomDatabase : RoomDatabase() {
-    abstract fun quoteDao(): QuoteDao?
+@Database(entities = [Quote::class], version = 1, exportSchema = false)
+abstract class QuoteRoomDatabaseNew : RoomDatabase() {
+    abstract fun quoteDao(): QuoteDaoNew?
 
     companion object {
         @Volatile
-        private var INSTANCE: QuoteRoomDatabase? = null
+        private var INSTANCE: QuoteRoomDatabaseNew? = null
         private const val NUMBER_OF_THREADS = 4
         val databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS)
-        fun getInstance(context: Context): QuoteRoomDatabase? {
+        fun getInstance(context: Context): QuoteRoomDatabaseNew? {
             if (INSTANCE == null) {
-                synchronized(QuoteRoomDatabase::class.java) {
+                synchronized(QuoteRoomDatabaseNew::class.java) {
                     if (INSTANCE == null) {
                         INSTANCE = Room.databaseBuilder(
                             context.applicationContext,
-                            QuoteRoomDatabase::class.java, "fake_quotes_database"
+                            QuoteRoomDatabaseNew::class.java, "fake_quotes_database"
                         ) //.allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
                             .build()

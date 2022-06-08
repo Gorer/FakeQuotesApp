@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface QuoteDao {
+interface QuoteDaoNew {
     @get:Query("SELECT * FROM quote")
     val allQuote: LiveData<List<Quote?>?>?
 

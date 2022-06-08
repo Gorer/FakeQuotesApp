@@ -68,10 +68,14 @@ class QuoteListAdapter(private val context: Context) : RecyclerView.Adapter<Quot
         fun onItemClick(quote: Quote?)
     }
 
+    fun setOnItemClickListener(listener: OnItemClickListener?) {
+        this.listener = listener
+    }
+
     /*fun setOnItemClickListener(listener: (Any) -> Unit) {
         this.listener = listener
     }*/
-    open fun setOnItemClickListener(listener: (Quote) -> Unit) {
-        this.listener = listener as OnItemClickListener?
-    }
+    /*open fun setOnItemClickListener(listener: (Quote) -> Unit) {
+        this.listener = listener// as OnItemClickListener?
+    }*/
 }

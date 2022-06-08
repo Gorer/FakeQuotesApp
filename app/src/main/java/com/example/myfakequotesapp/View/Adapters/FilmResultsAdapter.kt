@@ -1,5 +1,7 @@
 package com.example.myfakequotesapp.View.Adapters
 
+import android.content.ContentValues
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +32,7 @@ class FilmResultsAdapter : RecyclerView.Adapter<FilmResultsViewHolder>() {
 
     fun setFilms(films: List<Result?>?) {
         this.films = films
-        //Log.d(ContentValues.TAG, "IN CONSTRUCTOR: " + films!![0].getImage())
+        Log.d(ContentValues.TAG, "IN CONSTRUCTOR: " + films!![0]!!.image)
         notifyDataSetChanged()
     }
 
@@ -43,9 +45,9 @@ class FilmResultsAdapter : RecyclerView.Adapter<FilmResultsViewHolder>() {
     override fun onBindViewHolder(holder: FilmResultsViewHolder, position: Int) {
         val film = films!![position]
         //Picasso.get().load(film.getImage()).into(holder.imageViewSmallPoster)
-        Picasso.get().load(film?.image).into(holder.imageViewSmallPoster)
-        //Log.d(ContentValues.TAG, film.getImage())
-        //Log.d(ContentValues.TAG, "OnBindViewHolder: " + film.getImage())
+        Picasso.get().load(film!!.image).into(holder.imageViewSmallPoster)
+        Log.d(ContentValues.TAG, film!!.image!!)
+        Log.d(ContentValues.TAG, "OnBindViewHolder: " + film.image)
     }
 
     override fun getItemCount(): Int {
